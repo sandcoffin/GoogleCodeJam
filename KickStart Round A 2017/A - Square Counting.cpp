@@ -14,6 +14,9 @@ using namespace std;
 ll solve(ll m, ll n){
     ll count = min(m,n);
     ll ans = 0;
+    //each square of dimension s (edge has s+1 dots) has exactly s square(1 upright, s-1 tilted square) with 4 vertices
+    //on the boundary, total square Sum i (1->n-1) : i*(m-i)*(n-i)
+    //can calculate directly based on sum of 3 series of i,i^2, i^3 faster than the below method
     for (int i = 1; i <= count - 1; i++){
         ans += (i%M * (m%M - i%M)%M * (n%M - i%M)%M)%M;
         ans = ans%M;
